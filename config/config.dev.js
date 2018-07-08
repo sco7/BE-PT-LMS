@@ -2,6 +2,6 @@ module.exports = {
   db: {
     host: 'localhost',
     port: 5432,
-    database: 'lms'
+    database: 'lms_dev'
   }
 };

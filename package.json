@@ -1,10 +1,12 @@
 {
   "name": "be-nc-lms",
   "version": "1.0.0",
-  "description": "Back-end Learning Managment System in SQL",
+  "description": "Back-end Learning Management System in SQL",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "psql -f ./data/seed.test.sql && mocha --exit ./spec",
+    "dev": "nodemon listen.js",
+    "seed": "psql -f ./data/seed.dev.sql"
   },
   "author": "",
   "license": "ISC",
