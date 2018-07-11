@@ -6,4 +6,8 @@ router.get('/', sessionControl.getAllSessions);
 
 router.get('/:id', sessionControl.getSessionsById);
 
+router.get('/user/:id', sessionControl.getSessionsByUserId);
+
+router.get('/user/:id/:status', sessionControl.getSessionsByUserIdAndStatus);
+
 module.exports = router;

@@ -10,4 +10,10 @@ router.get('/user/:id', courseControl.getCoursesByUserId);
 
 router.get('/curricula/:id', courseControl.getCoursesByCurriculaId);
 
+router.get('/user/:id/:status', courseControl.getCoursesByUserIdAndStatus);
+
+router.post('/', courseControl.postCourse);
+
+router.delete('/:id', courseControl.deleteCourse )
+
 module.exports = router;

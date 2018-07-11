@@ -13,4 +13,16 @@ function fetchSessionById(id) {
    where id = $1`, [id])
 }
 
-module.exports = { fetchAllSessions, fetchSessionById };
+function fetchSessionsByUserId(id) {
+  return db.many(`Select * from sessions
+  join users on sessions.user_id = users.id
+   where users.id = $1`, [id])
+}
+
+function fetchSessionsByUserIdAndStatus(id, status) {
+  return db.many(`Select * from sessions
+  join users on sessions.user_id = users.id
+   where users.id = $1 and sessions.completed_status = $2`, [id, status])
+}
+
+module.exports = { fetchAllSessions, fetchSessionById, fetchSessionsByUserId, fetchSessionsByUserIdAndStatus };

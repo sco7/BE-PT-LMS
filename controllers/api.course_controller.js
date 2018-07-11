@@ -1,4 +1,4 @@
-const { fetchAllCourses, fetchCourseById, fetchCoursesByUserId, fetchCoursesByCurriculaId } = require('../models/api.course.model');
+const { fetchAllCourses, fetchCourseById, fetchCoursesByUserId, fetchCoursesByCurriculaId, fetchCoursesByUserIdAndStatus, sendCourse, removeCourseById } = require('../models/api.course.model');
 
 function getAllCourses(req, res) {
   fetchAllCourses((err, data) => {
@@ -40,4 +40,38 @@ function getCoursesByCurriculaId(req, res) {
       })
 }
 
-module.exports = { getAllCourses, getCourseById, getCoursesByUserId, getCoursesByCurriculaId };
+function getCoursesByUserIdAndStatus(req, res) {
+    const id = req.params.id
+    const status = req.params.status
+    fetchCoursesByUserIdAndStatus(id, status)
+        .then(data => {
+            return res.status(200).send({ Courses: data });
+        })
+        .catch(err => {
+            return res.status(500).send({ error: 'Cannot find Courses for User' });
+        })
+  }
+
+  function postCourse(req, res) {
+    const body = req.body
+    sendCourse(body)
+        .then(data => {
+            return res.status(200).send({ Course: data });
+        })
+        .catch(err => {
+            return res.status(500).send({ error: err });
+        })
+}
+
+function deleteCourse(req, res) {
+    const id = req.params.id
+    removeCourseById(id)
+        .then(data => {
+            return res.status(200).send({ message: 'Course has been removed from the database' });
+        })
+        .catch(err => {
+            return res.status(500).send({ error: 'Cannot find Course' });
+        })
+}
+
+module.exports = { getAllCourses, getCourseById, getCoursesByUserId, getCoursesByCurriculaId, getCoursesByUserIdAndStatus, postCourse, deleteCourse };
