@@ -8,4 +8,8 @@ router.get('/:id', curriculaControl.getCurriculaById);
 
 router.get('/user/:id', curriculaControl.getCurriculaByUserId);
 
+router.post('/', curriculaControl.postCurricula);
+
+router.delete('/:id', curriculaControl.deleteCurriculaById )
+
 module.exports = router;

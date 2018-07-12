@@ -25,4 +25,16 @@ function fetchSessionsByUserIdAndStatus(id, status) {
    where users.id = $1 and sessions.completed_status = $2`, [id, status])
 }
 
-module.exports = { fetchAllSessions, fetchSessionById, fetchSessionsByUserId, fetchSessionsByUserIdAndStatus };
+function sendSession(body) {
+  return db.one(`Insert into sessions (start_date, start_time, duration_hours, location, completed_status, course_id, user_id) values ($1, $2, $3, $4, $5, $6, $7) returning *`, [body.start_date, body.start_time, body.duration_hours, body.location, body.completed_status, body.course_id, body.user_id])
+}
+
+function removeSessionById(id) {
+  return db.one(`delete from sessions where sessions.id = $1 returning *`, [id])
+}
+
+function completeSessionById(id) {
+  return db.one(`update sessions set completed_status = 'Completed' where sessions.id = $1 returning *`, [id])
+}
+
+module.exports = { fetchAllSessions, fetchSessionById, fetchSessionsByUserId, fetchSessionsByUserIdAndStatus, sendSession, removeSessionById, completeSessionById };

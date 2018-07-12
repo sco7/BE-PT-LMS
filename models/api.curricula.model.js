@@ -18,4 +18,12 @@ function fetchCurriculaByUserId(id) {
   where users.id = $1`, [id])
 }
 
-module.exports = { fetchAllCurricula, fetchCurriculaById, fetchCurriculaByUserId, fetchCurriculaByUserId };
+function sendCurricula(body) {
+  return db.one(`Insert into curricula (title, description) values ($1, $2) returning *`, [body.title, body.description])
+}
+
+function removeCurriculaById(id) {
+  return db.one(`delete from curricula where curricula.id = $1 returning *`, [id])
+}
+
+module.exports = { fetchAllCurricula, fetchCurriculaById, fetchCurriculaByUserId, fetchCurriculaByUserId, sendCurricula, removeCurriculaById };

@@ -1,4 +1,4 @@
-const { fetchAllUsers, fetchUserById } = require('../models/api.user.model');
+const { fetchAllUsers, fetchUserById, sendUser, removeUserById} = require('../models/api.user.model');
 
 function getAllUsers(req, res) {
   fetchAllUsers((err, data) => {
@@ -18,4 +18,26 @@ function getUserById(req, res) {
       })
 }
 
-module.exports = { getAllUsers, getUserById };
+function postUser(req, res) {
+    const body = req.body
+    sendUser(body)
+        .then(data => {
+            return res.status(200).send({ User: data });
+        })
+        .catch(err => {
+            return res.status(500).send({ error: err });
+        })
+}
+
+function deleteUserById(req, res) {
+    const id = req.params.id
+    removeUserById(id)
+        .then(data => {
+            return res.status(200).send({ message: 'The User has been removed from the database' });
+        })
+        .catch(err => {
+            return res.status(500).send({ error: 'Cannot find the User' });
+        })
+}
+
+module.exports = { getAllUsers, getUserById, postUser, deleteUserById };

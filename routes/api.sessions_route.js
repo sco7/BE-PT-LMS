@@ -10,4 +10,11 @@ router.get('/user/:id', sessionControl.getSessionsByUserId);
 
 router.get('/user/:id/:status', sessionControl.getSessionsByUserIdAndStatus);
 
+router.post('/', sessionControl.postSession);
+
+router.delete('/:id', sessionControl.deleteSessionById )
+
+router.put('/:id', sessionControl.putSessionById )
+
+
 module.exports = router;
