@@ -1,4 +1,4 @@
-const { fetchAllUsers, fetchUserById, sendUser, removeUserById} = require('../models/api.user.model');
+const { fetchAllUsers, fetchUserById, sendUser, removeUserById, fetchUserByUsername } = require('../models/api.user.model');
 
 function getAllUsers(req, res) {
   fetchAllUsers((err, data) => {
@@ -40,4 +40,15 @@ function deleteUserById(req, res) {
         })
 }
 
-module.exports = { getAllUsers, getUserById, postUser, deleteUserById };
+function getUserByUsername(req, res) {
+    const username = req.params.username
+    fetchUserByUsername(username)
+        .then(data => {
+            return res.status(200).send({ Users: data });
+        })
+        .catch(err => {
+            return res.status(500).send({ error: 'Cannot find Users' });
+        })
+  }
+
+module.exports = { getAllUsers, getUserById, postUser, deleteUserById, getUserByUsername };

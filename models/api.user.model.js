@@ -20,4 +20,8 @@ function removeUserById(id) {
   return db.one(`delete from users where users.id = $1 returning *`, [id])
 }
 
-module.exports = { fetchAllUsers, fetchUserById, sendUser, removeUserById };
+function fetchUserByUsername(username) {
+  return db.one(`Select * from users where username = $1`, [username])
+}
+
+module.exports = { fetchAllUsers, fetchUserById, sendUser, removeUserById, fetchUserByUsername };

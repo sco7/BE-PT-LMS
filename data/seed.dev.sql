@@ -40,6 +40,7 @@ CREATE TABLE sessions
   FOREIGN KEY (course_id) REFERENCES courses(id) on delete cascade,
   FOREIGN KEY (user_id) REFERENCES users(id) on delete cascade
 );
+
 INSERT INTO curricula
   (title, description)
 VALUES
@@ -175,7 +176,7 @@ VALUES
   ('2018-10-08', '09:00:00', 8, 'Training Centre', 'Not Started', 13 , 5),
   ('2017-07-12', '09:00:00', 4, 'Workshop', 'Completed', 19, 5),
   ('2015-10-09', '08:00:00', 8, 'FLT Training Centre', 'Completed', 20, 5),
-  ('2018-10-08', '10:00:00', 4, 'Training Room A', 'Not started', 21, 5),
+  ('2018-10-08', '10:00:00', 4, 'Training Room A', 'Not Started', 21, 5),
   ('2018-05-11', '09:00:00', 4, 'Training Room A', 'Completed', 22, 5),
   ('2019-04-09', '09:00:00', 8, 'Training Room A', 'Not Started', 23, 5),
   ('2018-09-10', '09:00:00', 8, 'Training Room A', 'Not Started', 3, 6),

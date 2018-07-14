@@ -8,6 +8,8 @@ router.get('/:id', userControl.getUserById);
 
 router.post('/', userControl.postUser);
 
-router.delete('/:id', userControl.deleteUserById )
+router.delete('/:id', userControl.deleteUserById)
+
+router.get('/username/:username', userControl.getUserByUsername);
 
 module.exports = router;

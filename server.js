@@ -9,9 +9,11 @@ const app = express();
 const { json } = require('body-parser');
 const db = require('./db/config.index');
 const apiRouter = require('./routes/api.router');
+const cors = require('cors');
 
 app.use(json());
 
+app.use(cors());
 app.use('/api', apiRouter);
 
 app.use((err, req, res, next) => {
