@@ -1,4 +1,4 @@
-const { fetchAllCourses, fetchCourseById, fetchCoursesByUserId, fetchCoursesByCurriculaId, fetchCoursesByUserIdAndStatus, sendCourse, removeCourseById, fetchCoursesByUserIdNotCompleted } = require('../models/api.course.model');
+const { fetchAllCourses, fetchCourseById, fetchCoursesByUserId, fetchCoursesByCurriculaId, fetchCoursesByUserIdAndStatus, sendCourse, removeCourseById, fetchCoursesByUserIdCompleted } = require('../models/api.course.model');
 
 function getAllCourses(req, res) {
   fetchAllCourses((err, data) => {
@@ -40,9 +40,9 @@ function getCoursesByCurriculaId(req, res) {
       })
 }
 
-function getCoursesByUserIdNotCompleted(req, res) {
+function getCoursesByUserIdCompleted(req, res) {
     const id = req.params.id
-    fetchCoursesByUserIdNotCompleted(id)
+    fetchCoursesByUserIdCompleted(id)
         .then(data => {
             return res.status(200).send({ Courses: data });
         })
@@ -85,4 +85,4 @@ function deleteCourse(req, res) {
         })
 }
 
-module.exports = { getAllCourses, getCourseById, getCoursesByUserId, getCoursesByCurriculaId, getCoursesByUserIdAndStatus, postCourse, deleteCourse, getCoursesByUserIdNotCompleted };
+module.exports = { getAllCourses, getCourseById, getCoursesByUserId, getCoursesByCurriculaId, getCoursesByUserIdAndStatus, postCourse, deleteCourse, getCoursesByUserIdCompleted };

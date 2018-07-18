@@ -26,12 +26,13 @@ function fetchCoursesByCurriculaId(id) {
   where curricula.id = $1`, [id])
 }
 
-function fetchCoursesByUserIdNotCompleted(id) {
-  return db.many(`Select courses.title, courses.description
+function fetchCoursesByUserIdCompleted(id) {
+  return db.many(`Select *
   from ((courses 
-  inner join sessions on courses.id = sessions.course_id)
-  inner join users on sessions.user_id = users.id)
-  where users.id = $1 and sessions.completed_status <> 'Completed'`, [id])
+  join sessions on courses.id = sessions.course_id)
+  join users on sessions.user_id = users.id)
+  where users.id = $1 and sessions.completed_status = 'Completed'
+  order by sessions.start_date desc`, [id])
 }
 
 function fetchCoursesByUserIdAndStatus(id, status) {
@@ -39,7 +40,8 @@ function fetchCoursesByUserIdAndStatus(id, status) {
   from ((courses 
   inner join sessions on courses.id = sessions.course_id)
   inner join users on sessions.user_id = users.id)
-  where users.id = $1 and sessions.completed_status = $2`, [id, status])
+  where users.id = $1 and sessions.completed_status = $2
+  order by sessions.start_date asc`, [id, status])
 }
 
 function sendCourse(body) {
@@ -50,5 +52,5 @@ function removeCourseById(id) {
   return db.one(`delete from courses where courses.id = $1 returning *`, [id])
 }
 
-module.exports = { fetchAllCourses, fetchCourseById, fetchCoursesByUserId, fetchCoursesByCurriculaId, fetchCoursesByUserIdAndStatus, sendCourse, removeCourseById, fetchCoursesByUserIdNotCompleted };
+module.exports = { fetchAllCourses, fetchCourseById, fetchCoursesByUserId, fetchCoursesByCurriculaId, fetchCoursesByUserIdAndStatus, sendCourse, removeCourseById, fetchCoursesByUserIdCompleted };
 

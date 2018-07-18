@@ -10,7 +10,7 @@ router.get('/user/:id', courseControl.getCoursesByUserId);
 
 router.get('/curricula/:id', courseControl.getCoursesByCurriculaId);
 
-router.get('/notcompleted/user/:id', courseControl.getCoursesByUserIdNotCompleted);
+router.get('/completed/user/:id', courseControl.getCoursesByUserIdCompleted);
 
 router.get('/user/:id/:status', courseControl.getCoursesByUserIdAndStatus);
 
