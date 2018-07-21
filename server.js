@@ -1,8 +1,5 @@
-if (process.env.NODE_ENV !== 'test') process.env.NODE_ENV = 'dev';
+if (!process.env.NODE_ENV) process.env.NODE_ENV = 'dev';
 
-//const course = require('./models/api.course.model');
-//const religions = require('./models/api.religion_model');
-//const people = require('./models/api.people.model');
 
 const express = require('express');
 const app = express();

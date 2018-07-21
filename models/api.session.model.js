@@ -1,12 +1,25 @@
 const db = require('../db/config.index');
 
-function fetchAllSessions(cb) {
-  return db.many('Select * from sessions')
-    .then(data => {
-      cb(null, data);
-    })
-    .catch(cb);
+function fetchAllSessions() {
+  return db.many(`Select * from curricula 
+  join courses on courses.curricula_id = curricula.id
+  join users on users.curricula_id = curricula.id
+  join sessions on sessions.user_id = users.id and sessions.course_id = courses.id
+  order by sessions.start_date desc`)
 }
+
+// function fetchAllSessions() {
+//   return db.many(`Select * from sessions join courses on sessions.course_id = courses.id 
+//   join users on sessions.user_id = users.id order by sessions.start_date desc`)
+// }
+
+// function fetchAllSessions(cb) {
+//   return db.many('Select * from sessions')
+//     .then(data => {
+//       cb(null, data);
+//     })
+//     .catch(cb);
+// }
 
 function fetchSessionById(id) {
   return db.one(`Select * from sessions
