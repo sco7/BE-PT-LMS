@@ -13,10 +13,10 @@ function fetchCourseById(id) {
 }
 
 function fetchCoursesByUserId(id) {
-  return db.many(`Select courses.description, curricula.title
-  from ((courses 
-  inner join curricula on courses.curricula_id = curricula.id)
-  inner join users on curricula.id = users.curricula_id) 
+  return db.many(`Select *
+  from ((curricula 
+  join users on curricula.id = users.curricula_id)
+  join courses on courses.curricula_id = curricula.id)
   where users.id = $1`, [id])
 }
 
