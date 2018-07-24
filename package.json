@@ -6,7 +6,8 @@
   "scripts": {
     "test": "psql -f ./data/seed.test.sql && mocha --exit ./spec",
     "dev": "nodemon listen.js",
-    "seed": "psql -f ./data/seed.dev.sql"
+    "seed": "psql -f ./data/seed.dev.sql",
+    "start": "node listen.js"
   },
   "author": "",
   "license": "ISC",
