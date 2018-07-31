@@ -50,7 +50,7 @@ function getCoursesByUserIdCompleted(req, res) {
             return res.status(200).send({ Courses: data });
         })
         .catch(err => {
-            return res.status(500).send({ error: 'Cannot find Courses for User' });
+            return res.status(500).send({ error: 'Cannot find any Courses for the specified user' });
         })
   }
 
@@ -62,7 +62,7 @@ function getCoursesByUserIdCompleted(req, res) {
             return res.status(200).send({ Courses: data });
         })
         .catch(err => {
-            return res.status(500).send({ error: 'Cannot find Courses for the specified user' });
+            return res.status(500).send({ error: 'Cannot find any Courses for the specified user' });
         })
   }
 
@@ -73,7 +73,7 @@ function getCoursesByUserIdCompleted(req, res) {
             return res.status(200).send({ Course: data });
         })
         .catch(err => {
-            return res.status(500).send({ error: err });
+            return res.status(500).send({ error: 'Course could not be posted' });
         })
 }
 

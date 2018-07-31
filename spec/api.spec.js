@@ -55,7 +55,7 @@ describe('API endpoints', () => {
       });
     });
 
-    it('sends an error message when the course cannot be found during a get user profile request', () => {
+    it('sends an error message when the course cannot be found during a get course by user id request', () => {
       return request.get('/api/course/user/100').then(res => {
         expect(res.body.error).to.equal('Cannot find Courses');
         expect(res.status).to.equal(500);
@@ -79,6 +79,41 @@ describe('API endpoints', () => {
     });
 
     it('gets courses by user id when completed', () => {
+      return request.get('/api/course/completed/user/3').then(res => {
+        expect(res.body.Courses[0]).to.be.an('object');
+        expect(res.body.Courses[0].title).to.equal('Manager');
+        expect(res.body.Courses[1].title).to.equal('Induction');
+        expect(res.body.Courses[0]).to.have.keys(
+          'id',
+          'title',
+          'description',
+          'curricula_id',
+          'start_date',
+          'start_time',
+          'duration_hours',
+          'location',
+          'completed_status',
+          'course_id',
+          'user_id',
+          'account_type',
+          'first_name',
+          'last_name',
+          'job_title',
+          'gender',
+          'username'
+        );
+        expect(res.status).to.equal(200);
+      });
+    });
+
+    it('sends an error message when the course cannot be found during a get courses by user id when complete request', () => {
+      return request.get('/api/course/completed/user/100').then(res => {
+        expect(res.body.error).to.equal('Cannot find any Courses for the specified user');
+        expect(res.status).to.equal(500);
+      });
+    });
+
+    it('gets courses by user id and status when Completed', () => {
       return request.get('/api/course/user/3/Completed').then(res => {
         expect(res.body.Courses[0]).to.be.an('object');
         expect(res.body.Courses[0].title).to.equal('Induction');
@@ -106,10 +141,81 @@ describe('API endpoints', () => {
       });
     });
 
-    it('sends an error message when the course cannot be found during a get user profile request', () => {
+    it('gets courses by user id and status when not started', () => {
+      return request.get('/api/course/user/2/Not started').then(res => {
+        expect(res.body.Courses[0]).to.be.an('object');
+        expect(res.body.Courses[0].title).to.equal('Induction');
+        expect(res.body.Courses[0]).to.have.keys(
+          'id',
+          'title',
+          'description',
+          'curricula_id',
+          'start_date',
+          'start_time',
+          'duration_hours',
+          'location',
+          'completed_status',
+          'course_id',
+          'user_id',
+          'account_type',
+          'first_name',
+          'last_name',
+          'job_title',
+          'gender',
+          'username'
+        );
+        expect(res.status).to.equal(200);
+      });
+    });
+
+    it('sends an error message when the course cannot be found during a get courses by user id and status request', () => {
       return request.get('/api/course/user/100/Completed').then(res => {
-        expect(res.body.error).to.equal('Cannot find Courses for the specified user');
+        expect(res.body.error).to.equal('Cannot find any Courses for the specified user');
         expect(res.status).to.equal(500);
+      });
+    });
+
+    it('posts a course', () => {
+      return request
+        .post('/api/course')
+        .send({"title": "this is my new title",
+        "description": "This is my new description",
+        "curricula_id": 1 })
+        .then(res => {
+          expect(res.body.Course).to.eql({ id: 4,
+              title: 'this is my new title',
+              description: 'This is my new description',
+              curricula_id: 1 });
+        });
+    });
+
+    it('sends an error message when a post course fails', () => {
+      return request
+        .post('/api/course')
+        .send({ 'comment': 'This is another new comment' })
+        .then(res => {
+          expect(res.body.error).to.equal('Course could not be posted');
+        });
+    });
+
+    it('deletes course by id', () => {
+      return request
+        .delete('/api/course/1')
+        .then(res => {
+          expect(res.body.message).to.equal('Course has been removed from the database');
+          expect(res.statusCode).to.equal(200);
+        });
+    });
+
+    it('sends an error message when the comments id cannot be found during a delete comments by id request', () => {
+      return request
+        .delete('/api/course/100')
+        .then(res => {
+          expect(res.body.error).to.equal('Cannot find the Course');
+          expect(res.statusCode).to.equal(500).then
+        return request.get('/api/course').then(res => {
+          expect(res.body.Courses.length).to.equal(3);
+        });
       });
     });
   });
