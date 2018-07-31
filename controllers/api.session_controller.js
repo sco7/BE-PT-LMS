@@ -10,13 +10,6 @@ function getAllSessions(req, res) {
         })
   }
 
-// function getAllSessions(req, res) {
-//     fetchAllSessions((err, data) => {
-//       if (err) return res.status(500).send(err);
-//       else res.status(200).send({ Sessions: data });
-//       });
-// }
-
 function getSessionsById(req, res) {
   const id = req.params.id
   fetchSessionById(id)

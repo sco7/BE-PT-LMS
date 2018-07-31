@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS lms_dev;
-CREATE DATABASE lms_dev;
+DROP DATABASE IF EXISTS lms_test;
+CREATE DATABASE lms_test;
 
-\c lms_dev;
+\c lms_test;
 
 CREATE TABLE curricula (
   id SERIAL PRIMARY KEY,

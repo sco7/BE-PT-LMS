@@ -1,11 +1,7 @@
 const db = require('../db/config.index');
 
-function fetchAllUsers(cb) {
+function fetchAllUsers() {
   return db.many('Select * from users')
-    .then(data => {
-      cb(null, data);
-    })
-    .catch(cb);
 }
 
 function fetchUserById(id) {

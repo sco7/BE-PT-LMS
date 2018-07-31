@@ -1,11 +1,14 @@
 const { fetchAllCourses, fetchCourseById, fetchCoursesByUserId, fetchCoursesByCurriculaId, fetchCoursesByUserIdAndStatus, sendCourse, removeCourseById, fetchCoursesByUserIdCompleted } = require('../models/api.course.model');
 
 function getAllCourses(req, res) {
-  fetchAllCourses((err, data) => {
-      if (err) return res.status(500).send(err);
-      else res.status(200).send({ Courses: data });
-      });
-}
+    fetchAllCourses()
+        .then(data => {
+            return res.status(200).send({ Courses: data });
+        })
+        .catch(err => {
+            return res.status(500).send({ error: 'Cannot find Courses' });
+        })
+  }
 
 function getCourseById(req, res) {
   const id = req.params.id
@@ -14,7 +17,7 @@ function getCourseById(req, res) {
           return res.status(200).send({ Courses: data });
       })
       .catch(err => {
-          return res.status(500).send({ error: 'Cannot find Courses' });
+          return res.status(500).send({ error: 'Cannot find Course' });
       })
 }
 
@@ -59,7 +62,7 @@ function getCoursesByUserIdCompleted(req, res) {
             return res.status(200).send({ Courses: data });
         })
         .catch(err => {
-            return res.status(500).send({ error: 'Cannot find Courses for User' });
+            return res.status(500).send({ error: 'Cannot find Courses for the specified user' });
         })
   }
 

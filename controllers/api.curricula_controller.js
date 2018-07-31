@@ -1,11 +1,14 @@
 const { fetchAllCurricula, fetchCurriculaById, fetchCurriculaByUserId, sendCurricula, removeCurriculaById } = require('../models/api.curricula.model');
 
 function getAllCurricula(req, res) {
-  fetchAllCurricula((err, data) => {
-      if (err) return res.status(500).send(err);
-      else res.status(200).send({ Curricula: data });
-      });
-}
+    fetchAllCurricula()
+        .then(data => {
+            return res.status(200).send({ Curricula: data });
+        })
+        .catch(err => {
+            return res.status(500).send({ error: 'Cannot find Curricula' });
+        })
+  }
 
 function getCurriculaById(req, res) {
   const id = req.params.id

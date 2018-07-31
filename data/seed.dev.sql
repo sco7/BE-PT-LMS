@@ -114,7 +114,7 @@ INSERT INTO sessions
 VALUES
   ('2016-01-06', '09:00:00', 8, 'Training Room A', 'Completed', 1, 1),
   ('2018-02-06', '10:00:00', 4, 'Eng Office', 'Completed', 6, 1),
-  ('2018-07-01', '09:00:00', 8, 'Training Centre', 'Completed', 11, 1),
+  ('2018-08-14', '09:00:00', 8, 'Training Centre', 'Not Started', 11, 1),
   ('2014-05-07', '09:00:00', 8, 'Training Room A', 'Completed', 1, 2),
   ('2018-06-02', '10:00:00', 4, 'Eng Office', 'Completed', 6, 2),
   ('2018-07-01', '09:00:00', 8, 'Training Centre', 'Completed', 11, 2),
@@ -176,7 +176,7 @@ VALUES
   ('2018-04-08', '09:00:00', 8, 'Training Centre', 'Completed', 13, 5),
   ('2017-07-12', '09:00:00', 4, 'Workshop', 'Completed', 19, 5),
   ('2015-10-09', '08:00:00', 8, 'Training Room A', 'Completed', 20, 5),
-  ('2018-10-08', '10:00:00', 4, 'FLT Training Centre', 'Not Started', 21, 5),
+  ('2018-07-27', '10:00:00', 4, 'FLT Training Centre', 'Not Started', 21, 5),
   ('2018-05-11', '09:00:00', 4, 'Training Room A', 'Completed', 22, 5),
   ('2019-04-09', '09:00:00', 8, 'Training Room A', 'Not Started', 23, 5),
   ('2017-09-10', '09:00:00', 8, 'Training Room A', 'Completed', 3, 6),

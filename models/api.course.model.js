@@ -1,11 +1,7 @@
 const db = require('../db/config.index');
 
-function fetchAllCourses(cb) {
+function fetchAllCourses() {
   return db.many('Select * from courses')
-    .then(data => {
-      cb(null, data);
-    })
-    .catch(cb);
 }
 
 function fetchCourseById(id) {
