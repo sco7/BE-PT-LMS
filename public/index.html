@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Learning Management System (LMS) API docs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body id="preview">
+  <h1>Learning Management System (LMS)</h1>
+  <h2>API Endpoints</h2>
+  <h3>GET
+    <br/>
+    <code>/api/course</code>
+  </h3>
+  <p>Returns all the courses</p>
+  <h3>
+    <code>/api/course/:id</code>
+  </h3>
+  </h3>
+  <p>Returns an individual course</p>
+  <h3>
+    <code>/api/course/user/:id</code>
+  </h3>
+  </h3>
+  <p>Returns courses by user id</p>
+  <h3>
+    <code>/api/course/curricula/:id</code>
+  </h3>
+  </h3>
+  <p>Returns courses by curricula id</p>
+  <h3>
+    <code>/api/course/completed/user/:id</code>
+  </h3>
+  </h3>
+  <p>Returns courses by user id that have a completed status</p>
+  <h3>
+    <code>/api/course/:id/:status</code>
+  </h3>
+  </h3>
+  <p>Returns courses by user id that have a completed status of 'Not Started' or 'Completed'</p>
+  e.g:-
+  <code>https://nc-be-northcoders-news.herokuapp.com/api/course/3/Not Started</code>
+  <h3>
+    <code>/api/curricula/</code>
+  </h3>
+  </h3>
+  <p>Returns all the curricula</p>
+  <h3>
+    <code>/api/curricula/:id</code>
+  </h3>
+  </h3>
+  <p>Returns an individual curricula</p>
+  <h3>
+    <code>/api/curricula/user/:id</code>
+  </h3>
+  </h3>
+  <p>Returns curricula by user id</p>
+  <h3>
+    <code>/api/session/</code>
+  </h3>
+  </h3>
+  <p>Returns all the sessions</p>
+  <h3>
+    <code>/api/session/:id</code>
+  </h3>
+  </h3>
+  <p>Returns an individual session</p>
+  <h3>
+    <code>/api/session/user/:id</code>
+  </h3>
+  </h3>
+  <p>Returns sessions by user id</p>
+  <h3>
+    <code>/api/session/user/:id/:status</code>
+  </h3>
+  </h3>
+  <p>Returns sessions by user id that have a completed status of 'Not Started' or 'Completed'</p>
+  e.g:-
+  <code>https://nc-be-northcoders-news.herokuapp.com/api/session/3/Completed</code>
+  <h3>
+    <code>/api/user/</code>
+  </h3>
+  </h3>
+  <p>Returns all the users</p>
+  <h3>
+    <code>/api/user/:id</code>
+  </h3>
+  </h3>
+  <p>Returns an individual user</p>
+  <h3>
+    <code>/api/username/:username</code>
+  </h3>
+  </h3>
+  <p>Returns an individual user by username</p>
+
+  <h3>Post
+    <br/>
+    <code>/api/course</code>
+  </h3>
+  <p>Add a new course</p>
+  <h3>
+    <code>/api/curricula</code>
+  </h3>
+  </h3>
+  <p>Add a new curricula</p>
+  <h3>
+    <code>/api/session</code>
+  </h3>
+  </h3>
+  <p>Add a new session</p>
+  <h3>
+    <code>/api/user</code>
+  </h3>
+  </h3>
+  <p>Add a new user</p>
+
+  <h3>Delete
+    <br/>
+    <code>/api/course</code>
+  </h3>
+  <p>Removes a course</p>
+  <h3>
+    <code>/api/curricula</code>
+  </h3>
+  </h3>
+  <p>Removes a curricula</p>
+  <h3>
+    <code>/api/session</code>
+  </h3>
+  </h3>
+  <p>Removes a session</p>
+  <h3>
+    <code>/api/user</code>
+  </h3>
+  </h3>
+  <p>Removes a user</p>
+
+  <h3>Put
+    <br/>
+    <code>/api/session/:id</code>
+  </h3>
+  <p>Changes a session status from 'Not Started' to 'complete'</p>
+</body>
+
+</html>

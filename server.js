@@ -12,6 +12,7 @@ const cors = require('cors');
 app.use(json());
 
 app.use(cors());
+app.use(express.static('public'));
 app.use('/api', apiRouter);
 
 app.use((err, req, res, next) => {

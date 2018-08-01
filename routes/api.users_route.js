@@ -6,10 +6,11 @@ router.get('/', userControl.getAllUsers);
 
 router.get('/:id', userControl.getUserById);
 
+router.get('/username/:username', userControl.getUserByUsername);
+
 router.post('/', userControl.postUser);
 
 router.delete('/:id', userControl.deleteUserById)
 
-router.get('/username/:username', userControl.getUserByUsername);
 
 module.exports = router;
