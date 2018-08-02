@@ -4,7 +4,7 @@ LMS
 
  RESTful API for a Learning Management system  The API responds to a number of https requests to user, course, curricula and session endpoints.  
 
-Deployed on Heroku https://github.com/sco7/BE-PT-LMS with full route documentation
+Deployed on Heroku  https://nc-fe-lms.herokuapp.com with full route documentation
 
 ## Getting Started
 
