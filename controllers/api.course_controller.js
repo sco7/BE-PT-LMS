@@ -77,7 +77,7 @@ function getCoursesByUserIdCompleted(req, res) {
         })
 }
 
-function deleteCourse(req, res) {
+function deleteCourseById(req, res) {
     const id = req.params.id
     removeCourseById(id)
         .then(data => {
@@ -88,4 +88,4 @@ function deleteCourse(req, res) {
         })
 }
 
-module.exports = { getAllCourses, getCourseById, getCoursesByUserId, getCoursesByCurriculaId, getCoursesByUserIdAndStatus, postCourse, deleteCourse, getCoursesByUserIdCompleted };
+module.exports = { getAllCourses, getCourseById, getCoursesByUserId, getCoursesByCurriculaId, getCoursesByUserIdAndStatus, postCourse, deleteCourseById, getCoursesByUserIdCompleted };

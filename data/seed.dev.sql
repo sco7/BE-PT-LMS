@@ -1,12 +1,14 @@
 DROP DATABASE IF EXISTS lms_dev;
 CREATE DATABASE lms_dev;
 \c lms_dev;
+
 CREATE TABLE curricula
 (
   id SERIAL PRIMARY KEY,
   title VARCHAR (35) NOT NULL,
   description VARCHAR (150)
 );
+
 CREATE TABLE users
 (
   id SERIAL PRIMARY KEY,
@@ -19,6 +21,7 @@ CREATE TABLE users
   curricula_id INT NOT NULL,
   FOREIGN KEY (curricula_id) REFERENCES curricula(id)
 );
+
 CREATE TABLE courses
 (
   id SERIAL PRIMARY KEY,
@@ -27,6 +30,7 @@ CREATE TABLE courses
   curricula_id INT NOT NULL,
   FOREIGN KEY (curricula_id) REFERENCES curricula(id) on delete cascade
 );
+
 CREATE TABLE sessions
 (
   id SERIAL PRIMARY KEY,
@@ -49,6 +53,7 @@ VALUES
   ('Engineering Package', 'Contains additional training requirements for engineering employees'),
   ('Technical Package', 'Contains additional training requirements for technical employees'),
   ('Management Package', 'Contains additional training requirements for management employees');
+
 INSERT INTO users
   (account_type, first_name, last_name, job_title, gender, username, curricula_id)
 VALUES
@@ -77,6 +82,7 @@ VALUES
   ('User', 'Charles', 'Dowson', 'Engineering Manager', 'M', 'charl002', 5),
   ('User', 'Catherine', 'Golding', 'Sales Manager', 'F', 'cathe001', 5),
   ('User', 'Rupert', 'Harris', 'General Manager', 'M', 'ruper001', 5);
+
 INSERT INTO courses
   (title, description, curricula_id)
 VALUES
@@ -109,6 +115,7 @@ VALUES
   ('Leadership Skills', 'Leadership training for all managers', 5),
   ('Ethics', 'Ethics training', 5),
   ('Time Management', 'Time Management training aimed at managers', 5);
+
 INSERT INTO sessions
   (start_date, start_time, duration_hours, location, completed_status, course_id, user_id)
 VALUES

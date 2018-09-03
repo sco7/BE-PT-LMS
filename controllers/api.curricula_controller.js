@@ -39,7 +39,7 @@ function postCurricula(req, res) {
             return res.status(200).send({ Curricula: data });
         })
         .catch(err => {
-            return res.status(500).send({ error: err });
+            return res.status(500).send({ error: 'Curricula could not be posted' });
         })
 }
 
@@ -47,7 +47,7 @@ function deleteCurriculaById(req, res) {
     const id = req.params.id
     removeCurriculaById(id)
         .then(data => {
-            return res.status(200).send({ message: 'The Curricula has been removed from the database' });
+            return res.status(200).send({ message: 'Curricula has been removed from the database' });
         })
         .catch(err => {
             return res.status(500).send({ error: 'Cannot find the Curricula' });

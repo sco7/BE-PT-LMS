@@ -219,4 +219,99 @@ describe('API endpoints', () => {
       });
     });
   });
+    
+  describe('tests the curricula controller on the API', function() {
+    it('gets all curricula', () => {
+      return request.get('/api/curricula').then(res => {
+        expect(res.body.Curricula).to.be.an('array');
+        expect(res.body.Curricula.length).to.equal(2);
+        expect(res.status).to.equal(200);
+      });
+    });
+
+    it('gets curricula by id', () => {
+      return request.get('/api/curricula/1').then(res => {
+        expect(res.body.Curricula).to.be.an('object');
+        expect(res.body.Curricula.title).to.equal('Basic Package');
+        expect(res.body.Curricula).to.have.keys(
+          'id',
+          'title',
+          'description'
+        );
+        expect(res.status).to.equal(200);
+      });
+    });
+
+    it('sends an error message when the curricula cannot be found', () => {
+      return request.get('/api/curricula/100').then(res => {
+        expect(res.body.error).to.equal('Cannot find Curricula');
+        expect(res.status).to.equal(500);
+      });
+    });
+
+    it('gets curricula by user id', () => {
+      return request.get('/api/curricula/user/1').then(res => {
+        expect(res.body.Curricula[0]).to.be.an('object');
+        expect(res.body.Curricula[0].title).to.equal('Basic Package');
+        expect(res.body.Curricula[0]).to.have.keys(
+          'title',
+          'description'
+        );
+        expect(res.status).to.equal(200);
+      });
+    });
+    
+    it('sends an error message when the course cannot be found during a get course by user id request', () => {
+      return request.get('/api/curricula/user/100').then(res => {
+        expect(res.body.error).to.equal('Cannot find Curricula');
+        expect(res.status).to.equal(500);
+      });
+    });
+
+    it('posts a curricula', () => {
+      return request
+        .post('/api/curricula')
+        .send({"title": "this is my new title",
+        "description": "This is my new description"
+        })
+        .then(res => {
+          expect(res.body.Curricula).to.eql({
+              title: 'this is my new title',
+              description: 'This is my new description',
+              id: 3
+          });
+        });
+    });
+
+    it('sends an error message when a post curricula fails', () => {
+      return request
+        .post('/api/curricula')
+        .send({ 'comment': 'This is another new comment' })
+        .then(res => {
+          expect(res.body.error).to.equal('Curricula could not be posted');
+        });
+    });
+
+    it('deletes curricula by id', () => {
+      return request
+        .delete('/api/curricula/3')
+        .then(res => {
+          expect(res.body.message).to.equal('Curricula has been removed from the database');
+          expect(res.statusCode).to.equal(200);
+        });
+    });
+
+    it('sends an error message when the curricula id cannot be found ', () => {
+      return request
+        .delete('/api/curricula/100')
+        .then(res => {
+          expect(res.body.error).to.equal('Cannot find the Curricula');
+          expect(res.statusCode).to.equal(500).then
+        return request.get('/api/curricula').then(res => {
+          console.log(res.body);
+          expect(res.body.Curricula.length).to.equal(2);
+        });
+      });
+    });
+  });
 });

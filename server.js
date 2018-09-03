@@ -1,11 +1,11 @@
 //if (!process.env.NODE_ENV) process.env.NODE_ENV = 'dev';
-process.env.NODE_ENV =  process.env.NODE_ENV || 'dev';
+process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 
 
 const express = require('express');
 const app = express();
 const { json } = require('body-parser');
-const db = require('./db/config.index');
+//const db = require('./db/config.index');
 const apiRouter = require('./routes/api.router');
 const cors = require('cors');
 

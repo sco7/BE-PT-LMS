@@ -16,7 +16,7 @@ router.get('/user/:id/:status', courseControl.getCoursesByUserIdAndStatus);
 
 router.post('/', courseControl.postCourse);
 
-router.delete('/:id', courseControl.deleteCourse )
+router.delete('/:id', courseControl.deleteCourseById )
 
 module.exports = router;
 
