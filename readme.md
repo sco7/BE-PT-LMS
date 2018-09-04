@@ -35,7 +35,7 @@ How to run the tests
 Start postgress to connect to the server
 
 Seed the test data
-```npm run seed-test```
+```npm run seed```
 
 Run the tests
 ```npm test```
