@@ -26,7 +26,7 @@ Download the dependencies
 ```npm install```
 
 Seed the dev data
-```npm run seed-dev```
+```npm run seed```
 
 ## Running the tests
 
