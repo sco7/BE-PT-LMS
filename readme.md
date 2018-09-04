@@ -14,7 +14,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 * NodeJS
 * NPM
-* MongoDB
 
 ## Installing
 
@@ -26,9 +25,6 @@ Clone the repo
 Download the dependencies
 ```npm install```
 
-Start MongoDB
-```mongod```
-
 Seed the dev data
 ```npm run seed-dev```
 
@@ -36,8 +32,7 @@ Seed the dev data
 
 How to run the tests
 
-Start MongoDB
-```mongod```
+Start postgress to connect to the server
 
 Seed the test data
 ```npm run seed-test```
